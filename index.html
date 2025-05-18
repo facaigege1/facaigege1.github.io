@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接居中 & 视频区域</title>
+    <style>
+        body {
+            font-family: "微软雅黑", sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .center-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px;
+            transition: transform 0.3s ease;
+            position: relative; /* 定位基准 */
+        }
+
+        /* 点击后居中样式 */
+        .center-link.active {
+            transform: translate(calc(50% - 60px), calc(50% - 20px)); /* 假设按钮宽120px，高40px */
+            position: fixed;
+            z-index: 999;
+        }
+
+        .video-container {
+            width: 80%;
+            max-width: 640px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 居中链接 -->
+    <a href="https://www.cnblogs.com/" class="center-link" id="moveLink">点这里来找妹妹</a>
+
+    <!-- 视频区域 -->
+    <div class="video-container">
+        <h3>妹妹本人</h3>
+        <video controls poster="">
+            <source src="videos/mmexport1740701744945.mp4" type="video/mp4">
+            <source src="videos/mmexport1740701744945.mp4" type="video/webm">
+            您的浏览器不支持视频播放。
+        </video>
+    </div>
+
+    <script>
+        const link = document.getElementById('moveLink');
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认跳转
+            this.classList.toggle('active'); // 切换居中状态
+            
+            // 300ms后跳转（与CSS过渡时间一致）
+            setTimeout(() => {
+                if (this.classList.contains('active')) {
+                    window.location.href = this.href; // 跳转至URL
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
