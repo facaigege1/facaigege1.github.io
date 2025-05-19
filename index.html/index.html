@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宫格照片墙网页</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .header {
+            margin: 50px 0;
+        }
+        .title {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .jump-link {
+            display: inline-block;
+            padding: 12px 28px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #e53935;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+        }
+        .jump-link:hover {
+            background-color: #b71c1c;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .photo-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">我的私密空间，二五以下别来</h1>
+        <a href="https://newsa.html5.qq.com/v1/share-video?vid=84721133461351802" class="jump-link" id="autoJump">点这来找我玩</a>
+    </div>
+
+    <div class="photo-grid">
+        <div class="photo-item"><img src="img/pic1.webp" alt="照片1"></div>
+        <div class="photo-item"><img src="img/pic2.webp" alt="照片2"></div>
+        <div class="photo-item"><img src="img/pic3.webp" alt="照片3"></div>
+        <div class="photo-item"><img src="img/pic4.webp" alt="照片4"></div>
+        <div class="photo-item"><img src="img/pic5.webp" alt="照片5"></div>
+        <div class="photo-item"><img src="img/pic6.webp" alt="照片6"></div>
+		<div class="photo-item"><img src="img/pic12.webp" alt="照片6"></div>
+		<div class="photo-item"><img src="img/pic13.webp" alt="照片6"></div>
+		<div class="photo-item"><img src="img/pic14.webp" alt="照片6"></div>
+		<div class="photo-item"><img src="img/pic15.webp" alt="照片6"></div>
+		<div class="photo-item"><img src="img/pic17.webp" alt="照片6"></div>
+		
+    </div>
+
+    <script>
+        // 3秒自动跳转功能
+        const link = document.getElementById('autoJump');
+        let countdown = 1;
+        
+        function updateCountdown() {
+            link.textContent = `同城外卖，敲门贼快（${countdown}秒）`;
+            countdown--;
+            if (countdown < 0) {
+                window.location.href = link.href;
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
